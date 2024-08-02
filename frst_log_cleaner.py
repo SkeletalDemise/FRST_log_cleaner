@@ -463,7 +463,7 @@ clean_strings = [
     "The Qt Company Ltd.",
     "F.lux Software LLC",
     "f.lux Software LLC",
-    ": %windir%\system32\compattelrunner.exe",
+    r": %windir%\system32\compattelrunner.exe",
     "Synaptics Hong Kong Limited, Taiwan Branch (H.K.)",
     "TRACKER SOFTWARE PRODUCTS (CANADA) LIMITED",
     "Tracker Software Products (Canada) Ltd.",
@@ -479,7 +479,7 @@ clean_strings = [
     "Unity Technologies ApS",
     "Unity Technologies Inc.",
     "Ubisoft",
-    "Chrome\\User Data\System Profile [",
+    r"Chrome\\User Data\System Profile [",
     "ManyCam (VISICOM MÉDIA INC.)",
     "Visicom Media Inc.",
     "WindowsLiveWallpaper",
@@ -593,9 +593,8 @@ def should_remove_line(line):
 
 
 # Process the input file and write cleaned lines to the output file
-with open(input_path, encoding="utf-8") as oldfile, open(
-    "FRSTcleaned.txt", "w", encoding="utf-8"
-) as newfile:
+output_path = f"{input_path.replace('.txt', '')}_cleaned.txt"
+with open(input_path, encoding="utf-8") as oldfile, open(output_path, "w", encoding="utf-8") as newfile:
     for line in oldfile:
         line = line.replace("\u00AE", "(R)").replace("Â", "")
         if not should_remove_line(line):
@@ -603,13 +602,13 @@ with open(input_path, encoding="utf-8") as oldfile, open(
 
 # Calculate log size reduction percentage
 original_log = os.path.getsize(input_path)
-cleaned_log = os.path.getsize(os.path.realpath("FRSTcleaned.txt"))
+cleaned_log = os.path.getsize(os.path.realpath(output_path))
 percent = (original_log - cleaned_log) / original_log * 100
 print(f"\nFRST log size reduced by {int(percent)}%")
 
 # Count deleted lines
 num_lines = sum(1 for line in open(input_path, encoding="utf-8"))
-num_lines2 = sum(1 for line in open("FRSTcleaned.txt", encoding="utf-8"))
+num_lines2 = sum(1 for line in open(output_path, encoding="utf-8"))
 lines_deleted = num_lines - num_lines2
 print(f"\nDeleted {lines_deleted} lines.")
 
