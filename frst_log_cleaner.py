@@ -1,7 +1,7 @@
 import os
 
-# Remove any lines with these whitelisted strings in them
-clean_strings = [
+# clean and important
+CLEAN_STRINGS = {
     "14EC5FE4-5B1E-42B9-9EDA-F281C1506E7A",
     "89B4C1CD-B018-4511-B0A1-5476DBF70820",
     "8203C095-FB62-4005-807D-7C9A3775D1EA",
@@ -74,43 +74,25 @@ clean_strings = [
     "CHR Extension: (Privacy Badger)",
     "CHR Extension: (Google Translate)",
     "CHR Extension: (Adobe Acrobat: PDF edit, convert, sign tools)",
-    "CHR Extension: (McAfee(R) WebAdvisor)",
-    "OPR Extension: (opera-intro)",
     "BRA Extension: (Wallet Data Files Updater)",
-    "aeblfdkhhhdcdjpifhhbdiojplfjncoa",
-    "ihcjicgdanjaechkgeegckofjjedodee",
-    "bojobppfploabceghnmlahpoonbcbacn",
-    "jmjflgjpcpepeafmmgdpfkogkghcpiha",
-    "ghbmnnjooekpmoecnnnilnnbdlolhkhi",
-    "bmnlcjabgnpnenekpadlanbbkooimhnj",
-    "gighmmpiobklfepjocnamgkkbiglidom",
-    "mmioliijnhnoblpgimnlajmefafdfilb",
-    "ponfpcnoihfmfllpaingbgckeeldkhle",
-    "aoojcmojmmcbpfgoecoadbdpnagfchel",
-    "gkboaolpopklhgplhaaiboijnklogmbc",
-    "heplpbhjcbmiibdlchlanmdenffpiibo",
-    "iodkpdagapdfkphljnddpjlldadblomo",
-    "mfddibmblmbccpadfndgakiopmmhebop",
-    "pjbgfifennfhnbkhoidkdchbflppjncb",
-    "nkbihfbeogaeaoehlefnkodbefgpgknn",
-    "amaaokahonnfjjemodnpmeenfpnnbkco",
-    "bcjindcccaagfpapjjmafapmmgkkhgoa",
-    "fbgcedjacmlbgleddnoacbnijgmiolem",
-    "gngocbkfmikdgphklgmmehbjjlfgdemm",
-    "pocpnlppkickgojjlmhdmidojbmbodfm",
-    "nopfnnpnopgmcnkjchnlpomggcdjfepo",
-    # "AppData\\Local\\Resmon.ResmonCfg",
-    # "AppData\\Local\\housecall.guid.cache",
-    # "AppData\\Local\\zenmap.exe.log",
-    # "AppData\\Roaming\\jd-gui.cfg",
+    "bojobppfploabceghnmlahpoonbcbacn", # Malwarebytes Browser Guard (edge)
+    "jmjflgjpcpepeafmmgdpfkogkghcpiha", # Edge relevant text changes (edge)
+    "aeblfdkhhhdcdjpifhhbdiojplfjncoa", # 1Password – Password Manager (chromium)
+    "ihcjicgdanjaechkgeegckofjjedodee", # Malwarebytes Browser Guard (chromium)
+    "ghbmnnjooekpmoecnnnilnnbdlolhkhi", # Google Docs Offline (chromium)
+    "gighmmpiobklfepjocnamgkkbiglidom", # AdBlock — block ads across the web (chromium)
+    "mmioliijnhnoblpgimnlajmefafdfilb", # Shazam: Find song names from your browser (chromium)
+    "ponfpcnoihfmfllpaingbgckeeldkhle", # Enhancer for YouTube™ (chromium)
+    "nkbihfbeogaeaoehlefnkodbefgpgknn", # MetaMask (chromium)
+    "amaaokahonnfjjemodnpmeenfpnnbkco", # Grepper (chromium)
+    "bcjindcccaagfpapjjmafapmmgkkhgoa", # JSON Formatter (chromium)
+    "fbgcedjacmlbgleddnoacbnijgmiolem", # Microsoft Bing Search with Rewards (chromium)
+    "gngocbkfmikdgphklgmmehbjjlfgdemm", # SwagButton (chromium)
+    "pocpnlppkickgojjlmhdmidojbmbodfm", # Chromebook Recovery Utility (chromium)
     "R2 NVDisplay.ContainerLocalSystem;",
     "(2BrightSparks Pte Ltd )",
-    "(AVAST Software)",
     "(Adobe Systems)",
     "(Audyssey Labs)",
-    "(BitDefender S.R.L. Bucharest, ROMANIA)",
-    "(Bitdefender)",
-    "(Bleeping Computer, LLC)",
     "(Broadcom)",
     "(Conexant Systems Inc.)",
     "(DTS)",
@@ -119,19 +101,15 @@ clean_strings = [
     "(Discord Inc.)",
     "(Dolby Laboratories)",
     "(Dolby Laboratories, Inc.)",
-    "(ESET)",
     "(EldoS Corporation)",
     "(Farbar)",
     "(General Workings, Inc.)",
-    "(GridinSoft LLC)",
     "(Harman)",
     "(ICEpower a/s)",
     "(Igor Pavlov)",
     "(Initex)",
     "(Intel)",
-    "(Kaspersky)",
     "(Khronos Group)",
-    "(Malwarebytes)",
     "(Mente Binária)",
     "(MicroWorld Technologies Inc.)",
     "(Mozilla Foundation)",
@@ -152,7 +130,6 @@ clean_strings = [
     "(TOSHIBA CORPORATION.)",
     "(TOSHIBA Corporation)",
     "(The ICU Project)",
-    "(The OpenVPN Project)",
     "(Tonec Inc.)",
     "(Toshiba Client Solutions Co., Ltd.)",
     "(VSO Software)",
@@ -168,7 +145,6 @@ clean_strings = [
     "2BrightSparks Pte. Ltd.",
     "A-Volute SAS",
     "A-Volute",
-    "AO Kaspersky Lab",
     "ARCAI",
     "ASROCK Incorporation",
     "ASUSTEK COMPUTER INC.",
@@ -186,14 +162,11 @@ clean_strings = [
     "AnchorFree Inc",
     "Apple Inc.",
     "Autodesk, Inc.",
-    "Avast Software s.r.o.",
     "Avid Technology, Inc.",
     "BattlEye Innovations e.K.",
     "Beijing NormalSoft technology Co.,Ltd.",
-    "Bitdefender SRL",
     "Blizzard Entertainment, Inc.",
     "Bluestack Systems, Inc",
-    "Brave Software, Inc.",
     "CPUID S.A.R.L.U.",
     "Canon Inc.",
     "Citrix Systems, Inc.",
@@ -208,14 +181,11 @@ clean_strings = [
     "Dolby Laboratories, Inc.",
     "Dropbox, Inc",
     "ELAN Microelectronics Corp.",
-    "ESET, spol. s r.o.",
     "EVGA Co., Ltd.",
     "EVGA Corp.",
     "EasyAntiCheat Oy",
     "EldoS Corporation",
     "Electronic Arts, Inc.",
-    "Emsisoft (Emsisoft Limited)",
-    "Emsisoft Ltd",
     "Epic Games Inc.",
     "Even Balance, Inc.",
     "Figma, Inc.",
@@ -229,7 +199,6 @@ clean_strings = [
     "GoTrustID Inc.",
     "Google Inc.",
     "Google LLC",
-    "GridinSoft, LLC",
     "Guillaume Ryder (hxxp://utilfr42.free.fr)",
     "HP Inc.",
     "Hewlett Packard",
@@ -244,7 +213,6 @@ clean_strings = [
     "Intel(R) Corporation",
     "Intel(R) pGFX",
     "Ivaylo Beltchev",
-    "Kaspersky Lab ZAO",
     "Kilonova LLC",
     "Kristjan Skutta",
     "Lenovo (Beijing) Limited",
@@ -255,7 +223,6 @@ clean_strings = [
     "MICRO-STAR INTERNATIONAL CO., LTD",
     "MICRO-STAR INTERNATIONAL CO., LTD.",
     "MICSYS Technology Co., Ltd.",
-    "Malwarebytes Inc",
     "Mediafour Corporation",
     "Micro-Star International CO., LTD.",
     "Microsemi Corporation.",
@@ -267,24 +234,19 @@ clean_strings = [
     "Mozilla Corporation",
     "NVIDIA Corporation",
     "Node.js Foundation",
-    "NortonLifeLock Inc",
     "Notepad++",
     "Nuance Communications, Inc.",
     "OOO Lightshot",
     "Open Source Developer, Dominik Reichl",
     "OpenJS Foundation",
-    "OpenVPN Technologies, Inc.",
-    "Opera Software AS",
     "Oracle America, Inc.",
     "Other World Computing, Inc",
-    "Overwolf Ltd",
     "PACE Anti-Piracy, Inc.",
     "PC Micro Systems Inc.",
     "Pango Inc.",
     "Parsec Cloud, Inc.",
     "Piriform Software Ltd",
     "Primera Technology, Inc.",
-    "ProtonVPN AG",
     "QFX Software Corporation",
     "Qualcomm Atheros",
     "RealNetworks, Inc.",
@@ -295,7 +257,6 @@ clean_strings = [
     "Riverbed Technology, Inc.",
     "Rivet Networks LLC",
     "Rockstar Games, Inc.",
-    "S.C. BITDEFENDER S.R.L.",
     "SCREENOVATE TECHNOLOGIES LTD.",
     "SEIKO EPSON CORPORATION",
     "SEIKO EPSON Corporation",
@@ -307,7 +268,6 @@ clean_strings = [
     "Smart Sound Technology",
     "SonicWall Inc.",
     "Sony Imaging Products & Solutions Inc.",
-    "Sophos Ltd",
     "Sound Research Corporation",
     "Spotify AB",
     "SteelSeries ApS",
@@ -329,7 +289,6 @@ clean_strings = [
     "Wacom Technology Corp.",
     "Wacom Technology, Corp.",
     "Waves Inc",
-    "Webroot Software, Inc.",
     "Western Digital Technologies, Inc.",
     "Wondershare Technology Co.,Ltd",
     "X-Rite Incorporated",
@@ -347,7 +306,6 @@ clean_strings = [
     "VMware, Inc.",
     "Firebit OU",
     "Rainmeter",
-    "McAfee, LLC",
     "kernel-panik",
     "Razer USA Ltd.",
     "The CefSharp Authors",
@@ -355,11 +313,9 @@ clean_strings = [
     "ASUSTeK COMPUTER INC.",
     "ASUSTek Computer Inc.",
     "Plex, Inc.",
-    "Windscribe Limited",
     "DTS, Inc.",
     "Logitech Inc",
     "Logitech Inc.",
-    "Opera Norway AS",
     "Gaijin Network Ltd",
     "Nefarius Software Solutions e.U.",
     "Riot Games, Inc",
@@ -372,14 +328,8 @@ clean_strings = [
     "Noriyuki MIYAZAKI",
     "Blizzard Entertainment",
     "BeamMP",
-    "Bitdefender",
     "VoodooSoft, LLC",
-    "Comodo Security Solutions, Inc.",
-    "Comodo Security Solutions, Inc",
-    "COMODO Security Solutions Inc.",
-    "Opera Software",
     "(NVIDIA Corp.)",
-    "- Comodo)",
     "Reincubate Ltd",
     "(Team Cherry)",
     "LunarG, Inc.",
@@ -430,10 +380,6 @@ clean_strings = [
     "WhatsApp Inc.",
     "TechPowerUp LLC",
     "Ubisoft Entertainment Sweden AB",
-    "EXPRSVPN LLC",
-    "ExpressVPN",
-    "ExprsVPN LLC",
-    "The OpenVPN Project",
     "Ring.com",
     "NZXT, Inc.",
     "Wondershare Technology Group Co.,Ltd",
@@ -508,8 +454,6 @@ clean_strings = [
     "Focusrite Audio Engineering Ltd.",
     "Focusrite Audio Engineering Ltd",
     "Focusrite Audio Engineering, Ltd.",
-    "SentinelOne Inc.",
-    "Sentinel Labs, Inc.",
     "Psyonix, LLC",
     "(BetterDiscord)",
     "Bytedance Pte. Ltd.",
@@ -526,12 +470,9 @@ clean_strings = [
     "MUSIC Tribe Brands DE GmbH",
     "TC-Helicon Vocal Technologies Inc.",
     "Alexey Nicolaychuk",
-    "nordvpn s.a.",
-    "nordvpn S.A.",
     "Florian Höch",
     "Duet, Inc.",
     "Hugh Bailey",
-    "Mullvad VPN AB",
     "Shenzhen Huion Animation Technology Co.,LTD",
     "ICEpower a/s",
     "ICEpower A/S",
@@ -557,11 +498,9 @@ clean_strings = [
     "Voicemod",
     "win.rar GmbH",
     "Alexander Roshal",
-]
+}
 
-# Always keep lines with these strings in them
-# Unless it's from `Microsoft Corporation`
-important_strings = [
+IMPORTANT_STRINGS = {
     "<==== ATTENTION",
     "No File",
     "File not signed",
@@ -571,46 +510,50 @@ important_strings = [
     "no ImagePath",
     "detected!",
     "powershell",
-]
-white_list = []
+}
 
-input_path = input("Input FRST log path: ")
+WHITE_LIST = set()
 
-
-# Define a function to check if a line should be removed
 def should_remove_line(line):
-    # Check if it contains any of the clean strings and none of the important strings
-    if any(clean_string in line for clean_string in clean_strings) and not any(
-        important_string in line for important_string in important_strings
-    ):
-        return True
-    # Check if it contains any of the important strings and any of the white list strings
-    if any(important_string in line for important_string in important_strings) and any(
-        white_string in line for white_string in white_list
-    ):
-        return True
-    return False
+    # Clean lines based on strings
+    contains_clean_string = any(clean_string in line for clean_string in CLEAN_STRINGS)
+    contains_important_string = any(important_string in line for important_string in IMPORTANT_STRINGS)
+    contains_white_list_string = any(white_string in line for white_string in WHITE_LIST)
 
+    return contains_clean_string and not contains_important_string and not contains_white_list_string
 
-# Process the input file and write cleaned lines to the output file
-with open(input_path, encoding="utf-8") as oldfile, open(
-    "FRSTcleaned.txt", "w", encoding="utf-8"
-) as newfile:
-    for line in oldfile:
-        line = line.replace("\u00AE", "(R)").replace("Â", "")
-        if not should_remove_line(line):
-            newfile.write(line)
+def clean_log(input_path):
+    # process input file, clean output file.
+    output_path = f"{os.path.splitext(input_path)[0]}_cleaned.txt"
 
-# Calculate log size reduction percentage
-original_log = os.path.getsize(input_path)
-cleaned_log = os.path.getsize(os.path.realpath("FRSTcleaned.txt"))
-percent = (original_log - cleaned_log) / original_log * 100
-print(f"\nFRST log size reduced by {int(percent)}%")
+    with open(input_path, encoding="utf-8") as oldfile, open(output_path, "w", encoding="utf-8") as newfile:
+        for line in oldfile:
+            line = line.replace("\u00AE", "(R)").replace("Ã‚", "")
+            if not should_remove_line(line):
+                newfile.write(line)
 
-# Count deleted lines
-num_lines = sum(1 for line in open(input_path, encoding="utf-8"))
-num_lines2 = sum(1 for line in open("FRSTcleaned.txt", encoding="utf-8"))
-lines_deleted = num_lines - num_lines2
-print(f"\nDeleted {lines_deleted} lines.")
+    return output_path
 
-print("\nFRST log was cleaned.")
+def calculate_reduction(input_path, output_path):
+    # Calculate and print log reduction size.
+    original_log_size = os.path.getsize(input_path)
+    cleaned_log_size = os.path.getsize(os.path.realpath(output_path))
+    percent_reduction = (original_log_size - cleaned_log_size) / original_log_size * 100
+
+    with open(input_path, encoding="utf-8") as oldfile, open(output_path, encoding="utf-8") as newfile:
+        num_lines_original = sum(1 for _ in oldfile)
+        num_lines_cleaned = sum(1 for _ in newfile)
+
+    lines_deleted = num_lines_original - num_lines_cleaned
+
+    print(f"\nFRST log size reduced by {int(percent_reduction)}%")
+    print(f"\nDeleted {lines_deleted} lines.")
+    print("\nFRST log was cleaned.")
+
+def main():
+    input_path = input("Input FRST log path: ")
+    output_path = clean_log(input_path)
+    calculate_reduction(input_path, output_path)
+
+if __name__ == "__main__":
+    main()
